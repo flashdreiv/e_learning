@@ -12,8 +12,13 @@ const SignupPage = () => {
     if (isLoggedIn) history.push("/");
   }, [isLoggedIn, history]);
 
-  const onSubmit = (formValues) => {
-    signUp(formValues);
+  const onSubmit = async (formValues) => {
+    const success = await signUp(formValues);
+    if (success) {
+      setTimeout(() => {
+        history.push("/signin");
+      }, 1000);
+    }
   };
 
   return (

@@ -92,6 +92,8 @@ class RegisterStudentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 {"error": "Password fields didn't match."}
             )
+        if Student.objects.filter(email=attrs["email"]).exists():
+            raise serializers.ValidationError({"email": "This email is already in use."})
 
         return attrs
 

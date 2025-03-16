@@ -48,12 +48,14 @@ const auth = (set, get) => ({
           state.status.successMessage = "Sign up successful";
         })
       );
+      return true;
     } catch (err) {
       set(
         produce((state) => {
           state.status.errMessage = err.response.data;
         })
       );
+      return false;
     }
   },
 });

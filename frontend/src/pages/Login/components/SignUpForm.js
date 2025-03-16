@@ -8,8 +8,8 @@ import ErrorHandling from "./ErrorHandling";
 const SignUpForm = ({ onSubmit }) => {
   return (
     <Form
-      onSubmit={(formObj) => {
-        onSubmit(formObj);
+      onSubmit={async (formObj) => {
+        await onSubmit(formObj);
       }}
       validate={validatePasswordMatch}
     >
